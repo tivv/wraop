@@ -1,6 +1,8 @@
 WrAOP wrapper building library
 ==============================
-1. Introduction
+
+Introduction
+------------
 
 How many times have you created a wrapper class that delegates all the
 methods to it's delegate, while adding some functionality in few places?
@@ -12,7 +14,8 @@ responsibility or "pre" and "post" interfaces simply for extension points.
 Simply allow your users to register aspects and wrap your objects with
 the help of this library.
 
-2. Comparison to other options
+Comparison to other options
+---------------------------
 
 - Spring AOP.
 
@@ -27,48 +30,53 @@ fashion. You directly say which objects you'd like to wrap
 prefers to do this in compile time. This library creates you proxies,
 and you can use AspectJ annotations to do the work.
 
-3. Requirements
+Requirements
+------------
 
  - Java 6
  - Spring AOP
 
-4. Optional dependencies
+Optional dependencies
+---------------------
 
  - cglib - to make faster proxies
  - AspectJ weaver - to use AspectJ annotations
 
-5. Quick start
+Quick start
+-----------
 
- new WrapperFactoryBuilder().<TargetClass>build()
-    .withAspects(aspect1, aspect2, aspect3).wrapAllInterfaces(target)
+     new WrapperFactoryBuilder().<TargetClass>build()
+        .withAspects(aspect1, aspect2, aspect3).wrapAllInterfaces(target)
 
  That's all. You can reuse the factory with aspects registered to wrap
  multiple objects. It's thread-safe. It will autodetect aspect types
  (Spring/AOP alliance/AspectJ). Here is an example aspect from tests:
 
- @Aspect
- public class ConstantReturningAspect {
-     private final Object constant;
+     @Aspect
+     public class ConstantReturningAspect {
+         private final Object constant;
 
-     public ConstantReturningAspect(Object constant) {
-         this.constant = constant;
-     }
+         public ConstantReturningAspect(Object constant) {
+             this.constant = constant;
+         }
 
-     @Around("execution(* im.tym.wraop.data.Transformer.transform(..))")
-     Object returnConstant() {
-         return constant;
+         @Around("execution(* im.tym.wraop.data.Transformer.transform(..))")
+         Object returnConstant() {
+             return constant;
+         }
      }
- }
 
  Easy, is not it?
 
-6. Details
+Details
+-------
 
  For WrapperFactory, please see it's javadoc.
  As of aspect types, please refer to Spring AOP documentation:
  http://docs.spring.io/spring/docs/3.2.3.RELEASE/spring-framework-reference/html/aop.html#aop-introduction
 
-7. Contacts
+Contacts
+--------
 
  Project home page: https://github.com/tivv/wraop You can submit bugs,
     feature requests or pull requests there.
