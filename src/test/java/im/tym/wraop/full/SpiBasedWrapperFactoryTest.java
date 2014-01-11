@@ -24,12 +24,11 @@ import org.junit.runner.RunWith;
 import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.easymock.annotation.Mock;
 
+import java.awt.event.AWTEventListener;
+import java.awt.event.AWTEventListenerProxy;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.RandomAccess;
-import java.util.Set;
+import java.util.*;
 
 import static org.easymock.EasyMock.expect;
 import static org.unitils.easymock.EasyMockUnitils.replay;
@@ -162,6 +161,13 @@ public class SpiBasedWrapperFactoryTest {
         factorySpi.setInterfaces(RandomAccess.class);
         replay();
         Assert.assertSame(factory, factory.withAllInterfacesOf(input));
+    }
+
+    @Test
+    public void testWithAllInterfacesOfClass() throws Exception {
+        factorySpi.setInterfaces(AWTEventListener.class, EventListener.class);
+        replay();
+        Assert.assertSame(factory, factory.withAllInterfacesOfClass(AWTEventListenerProxy.class));
     }
 
     @Test
