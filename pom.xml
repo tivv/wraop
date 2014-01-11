@@ -47,8 +47,8 @@
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>1.6.2</version>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.6.12</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -104,7 +104,7 @@
                         </goals>
                         <configuration>
                             <classpathDependencyExcludes>
-                                <classpathDependencyExcludes>org.aspectj:aspectjrt</classpathDependencyExcludes>
+                                <classpathDependencyExcludes>org.aspectj:aspectjweaver</classpathDependencyExcludes>
                             </classpathDependencyExcludes>
                             <includes>
                                 <include>/im/tym/wraop/noaspectj/**/*Test.java</include>
@@ -120,8 +120,58 @@
                         </goals>
                         <configuration>
                             <classpathDependencyExcludes>
-                                <classpathDependencyExcludes>org.aspectj:aspectjrt</classpathDependencyExcludes>
+                                <classpathDependencyExcludes>org.aspectj:aspectjweaver</classpathDependencyExcludes>
                                 <classpathDependencyExcludes>org.springframework:spring-aop</classpathDependencyExcludes>
+                            </classpathDependencyExcludes>
+                            <includes>
+                                <include>/im/tym/wraop/nospring/**/*Test.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-nocgllib</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <classpathDependencyExcludes>
+                                <classpathDependencyExclude>cglib:cglib</classpathDependencyExclude>
+                            </classpathDependencyExcludes>
+                            <includes>
+                                <include>/im/tym/wraop/full/**/*Test.java</include>
+                                <include>/im/tym/wraop/both/**/*Test.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>noaspectj-nocglib</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <classpathDependencyExcludes>
+                                <classpathDependencyExcludes>org.aspectj:aspectjweaver</classpathDependencyExcludes>
+                                <classpathDependencyExclude>cglib:cglib</classpathDependencyExclude>
+                            </classpathDependencyExcludes>
+                            <includes>
+                                <include>/im/tym/wraop/noaspectj/**/*Test.java</include>
+                                <include>/im/tym/wraop/both/**/*Test.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>nospring-nocglib</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <classpathDependencyExcludes>
+                                <classpathDependencyExcludes>org.aspectj:aspectjweaver</classpathDependencyExcludes>
+                                <classpathDependencyExcludes>org.springframework:spring-aop</classpathDependencyExcludes>
+                                <classpathDependencyExclude>cglib:cglib</classpathDependencyExclude>
                             </classpathDependencyExcludes>
                             <includes>
                                 <include>/im/tym/wraop/nospring/**/*Test.java</include>

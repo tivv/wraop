@@ -24,6 +24,8 @@ import org.junit.runner.RunWith;
 import org.unitils.UnitilsJUnit4TestClassRunner;
 import org.unitils.easymock.annotation.Mock;
 
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.RandomAccess;
@@ -40,8 +42,7 @@ public class SpiBasedWrapperFactoryTest {
     @Mock
     private WrapperFactorySpi<Object> factorySpi;
 
-    @Mock
-    private ClassLoader classLoader;
+    private ClassLoader classLoader = new URLClassLoader(new URL[0]);
 
     private Object returned = new Object();
     private Object input1 = new Object();

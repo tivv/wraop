@@ -13,17 +13,25 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package im.tym.wraop.impl;
+package im.tym.wraop.data;
 
-import org.springframework.aop.framework.ProxyFactory;
+import org.aopalliance.intercept.MethodInterceptor;
+import org.aopalliance.intercept.MethodInvocation;
 
 /**
  * @author Vitalii Tymchyshyn
  */
 
-public class SpringAOPWrapperFactorySpi<I> extends ProxyCreatorBasedWrapperFactorySpi<I, ProxyFactory> {
-    public SpringAOPWrapperFactorySpi() {
-        super(new ProxyFactory());
+public class ConstantReturningAdvice implements MethodInterceptor {
+    private final Object returnValue;
+
+    public ConstantReturningAdvice(Object returnValue) {
+        this.returnValue = returnValue;
     }
 
+    @Override
+    public Object invoke(MethodInvocation invocation) throws Throwable {
+        invocation.proceed();
+        return returnValue;
+    }
 }

@@ -13,17 +13,15 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package im.tym.wraop.impl;
-
-import org.springframework.aop.framework.ProxyFactory;
+package im.tym.wraop.data;
 
 /**
  * @author Vitalii Tymchyshyn
  */
 
-public class SpringAOPWrapperFactorySpi<I> extends ProxyCreatorBasedWrapperFactorySpi<I, ProxyFactory> {
-    public SpringAOPWrapperFactorySpi() {
-        super(new ProxyFactory());
+public class ToStringTransformer implements Transformer<Object, String> {
+    @Override
+    public String transform(Object from) {
+        return from.toString();
     }
-
 }

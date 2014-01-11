@@ -13,17 +13,24 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package im.tym.wraop.impl;
+package im.tym.wraop.data;
 
-import org.springframework.aop.framework.ProxyFactory;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
 
 /**
  * @author Vitalii Tymchyshyn
  */
+@Aspect
+public class ConstantReturningAspect {
+    private final Object constant;
 
-public class SpringAOPWrapperFactorySpi<I> extends ProxyCreatorBasedWrapperFactorySpi<I, ProxyFactory> {
-    public SpringAOPWrapperFactorySpi() {
-        super(new ProxyFactory());
+    public ConstantReturningAspect(Object constant) {
+        this.constant = constant;
     }
 
+    @Around("execution(* im.tym.wraop.data.Transformer.transform(..))")
+    Object returnConstant() {
+        return constant;
+    }
 }
