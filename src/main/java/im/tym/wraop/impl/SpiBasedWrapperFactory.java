@@ -115,6 +115,12 @@ public class SpiBasedWrapperFactory<I> implements WrapperFactory<I> {
     }
 
     @Override
+    public WrapperFactory<I> withAllInterfacesOfClass(Class clazz) {
+        setInterfaces(ClassUtils.getAllInterfacesForClass(clazz));
+        return this;
+    }
+
+    @Override
     public WrapperFactory<I> withInterface(Class<?> wrappedInterface) {
         spi.addInterface(wrappedInterface);
         return this;
