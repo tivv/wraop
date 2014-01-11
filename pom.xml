@@ -7,6 +7,38 @@
     <groupId>im.tym.wraop</groupId>
     <artifactId>wraop</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>WrAOP wrapper building library</name>
+    <description>
+        Simple lib that allows you to easily build wrappers or enable plugins for your app with AspectJ annotations
+        or Spring/AOP alliance advices.
+    </description>
+    <url>https://github.com/tivv/wraop</url>
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:https://github.com/tivv/wraop.git</connection>
+        <developerConnection>scm:git:https://github.com/tivv/wraop.git</developerConnection>
+        <url>https://github.com/tivv/wraop.git</url>
+    </scm>
+    <developers>
+        <developer>
+            <id>tivv</id>
+            <name>Vitalii Tymchyshyn</name>
+            <email>vit@tym.im</email>
+            <url>http://blog.vit.tym.im/</url>
+        </developer>
+    </developers>
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
